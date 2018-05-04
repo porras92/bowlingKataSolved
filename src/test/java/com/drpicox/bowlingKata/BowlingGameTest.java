@@ -13,18 +13,8 @@ import static org.junit.Assert.assertThat;
 public class BowlingGameTest extends TestCase {
     private Game g;
 
-    @Before
     protected void setUp() throws Exception {
         g = new Game();
-    }
-
-    @Test
-    public void testGutterGame() throws Exception {
-
-         rollMany(20, 0);
-
-        assertEquals(0, g.score());
-
     }
 
     private void rollMany(int n, int pins) {
@@ -32,16 +22,16 @@ public class BowlingGameTest extends TestCase {
             g.roll(pins);
     }
 
+    public void testGutterGame() throws Exception {
+        rollMany(20, 0);
+        assertEquals(0, g.score());
+    }
 
-    @Test
     public void testAllOnes() throws Exception {
-
-        rollMany(20, 1);
-
+        rollMany(20,1);
         assertEquals(20, g.score());
     }
 
-    @Test
     public void testOneSpare() throws Exception {
         g.roll(5);
         g.roll(5); // spare
@@ -49,8 +39,4 @@ public class BowlingGameTest extends TestCase {
         rollMany(17,0);
         assertEquals(16,g.score());
     }
-
-
-
-
 }
